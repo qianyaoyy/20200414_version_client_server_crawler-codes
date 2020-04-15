@@ -1,2 +1,4 @@
-www.cdc.gov/coronavirus/2019-ncov/cases-updates/cases-in-us.html,
-www.health.nd.gov/diseases-conditions/coronavirus/north-dakota-coronavirus-cases,
+[0],https://www.cdc.gov/coronavirus/2019-ncov/cases-updates/cases-in-us.html
+[1],https://www.health.nd.gov/diseases-conditions/coronavirus/north-dakota-coronavirus-case
+[2],https://doh.sd.gov/news/coronavirus.aspx
+[3],https://coronavirus.1point3acres.com/

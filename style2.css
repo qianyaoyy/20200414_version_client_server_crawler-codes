@@ -1,0 +1,32 @@
+body {
+  background-color: powderblue;
+}
+
+body {
+  background-image: url('img.png');
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
+
+    background-size: 300px 100px;
+}
+
+
+h1 {
+  color: blue;
+}
+p {
+   line-height: 60px;
+   margin: 10px;
+   padding-bottom: 10px;
+   text-align: justify;
+   width: 2000px;
+   color: #fa2dff;
+}
+div {
+  height: 2000px;
+  width: 1000px;
+  background-color: powderblue;
+}
+
+

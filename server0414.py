@@ -10,14 +10,12 @@ def WebCrawl(url):
 	try:
 		page = requests.get(url)
 		soup = BeautifulSoup(page.text, 'html.parser')
-
 		# prints any titles from the first page hit.
 		titles = soup.find_all('title')
 		links = soup.find_all('a', attrs={'href': re.compile("^http")})
-
 		add_list = []
 		conts_list = []
-		results = {}
+		results_dic = {}
 		for link in links:
 			address = link.get('href')
 			try:
@@ -27,14 +25,14 @@ def WebCrawl(url):
 				text = new_soup.find_all('p')[0].get_text()
 				add_list.append(address)
 				conts_list.append(title + '\n' + text)
-				results[address] = 'TITLE: ' + title + '  TEXT: ' + text
+				results_dic[address] = 'TITLE~ ' + title + '  TEXT~ ' + text
 			except Exception as ie:
 				pass
 
 	except Exception as e:
 		pass
 
-	return add_list, conts_list
+	return add_list, conts_list, results_dic
 
 
 print_lock = threading.Lock()
@@ -50,10 +48,11 @@ def threaded(c):
 		my_url=url.decode('utf-8')
 		print('the website you are crawling is: ')
 		print(my_url)
-		url_list, text_list= WebCrawl(my_url)
+		url_list, text_list, results_dic= WebCrawl(my_url)
 		print('crawled links #. is : ')
-		print(len(url_list))
-		msg=pickle.dumps(url_list)
+		print(len(results_dic))
+		#print(results_dic)
+		msg=pickle.dumps(results_dic)
 		msg = bytes(f"{len(msg):<{HEADERSIZE}}", 'utf-8')+msg
 		c.send(msg)
 		print('data sent!')

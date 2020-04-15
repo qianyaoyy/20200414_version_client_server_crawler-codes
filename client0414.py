@@ -23,10 +23,9 @@ def Main():
 		urls=loadresources()
 		print('Available web urls are: ')
 		for i in range(len(urls)):
-			print(urls[i][0])
-
+			print(urls[i])
 		idx = int(input("Enter index of url you want to crawl with idx[0,1,2,3,..]: "))
-		url='https://'+urls[idx][0]
+		url=urls[idx][1]
 		s.send(url.encode('utf-8'))
 		print('crawling.....')
 
@@ -42,8 +41,16 @@ def Main():
 			full_msg += msg
 			if len(full_msg) - HEADERSIZE == msglen:
 				print("all the crawled url resources: ")
-				print(pickle.loads(full_msg[HEADERSIZE:]))
-				print('Total # is: ', len(pickle.loads(full_msg[HEADERSIZE:])))
+				#print(pickle.loads(full_msg[HEADERSIZE:]))
+				final_dic=pickle.loads(full_msg[HEADERSIZE:])
+				k=len(final_dic)
+				print('Total # is: ', k)
+				with open('plot.txt', 'w') as file:
+					for item in final_dic:
+						print(item)
+						print(final_dic[item])
+						file.write(item+'\n')
+
 				#new_msg = True
 				#full_msg = b""
 				break
